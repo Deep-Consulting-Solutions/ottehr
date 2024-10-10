@@ -227,6 +227,9 @@ const getPatientSenderNameFromComm = (
     const parent = rpMap[senderRef] as RelatedPerson;
     const patient = patientMap[parent.patient.reference ?? ''];
 
+    console.log('patient', patient);
+    console.log('parent', parent);
+
     let firstName = getFirstName(patient);
     let lastName = getLastName(patient);
 
@@ -234,7 +237,7 @@ const getPatientSenderNameFromComm = (
       return `${firstName} ${lastName}`;
     } else if (patient) {
       firstName = getFirstName(parent);
-      lastName = `${getLastName(parent)} (parent)`;
+      lastName = `${getLastName(parent)}`;
     }
 
     if (firstName && lastName) {
