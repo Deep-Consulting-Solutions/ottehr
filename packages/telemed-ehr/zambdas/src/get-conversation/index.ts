@@ -234,7 +234,7 @@ const getPatientSenderNameFromComm = (
       return `${firstName} ${lastName}`;
     } else if (patient) {
       firstName = getFirstName(parent);
-      lastName = getLastName(parent);
+      lastName = `${getLastName(parent)} (parent)`;
     }
 
     if (firstName && lastName) {

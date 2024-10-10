@@ -205,7 +205,7 @@ export const getConversation = async (
     if (GET_CONVERSATION_ZAMBDA_ID == null) {
       throw new Error('GET_CONVERSATION_ZAMBDA_ID environment variable could not be loaded');
     }
-
+    console.log('getConversation', parameters);
     const response = await zambdaClient?.invokeZambda({
       zambdaId: GET_CONVERSATION_ZAMBDA_ID,
       payload: parameters,
