@@ -80,6 +80,9 @@ export const index = async (input: ZambdaInput): Promise<APIGatewayProxyResult> 
     ]);
     console.timeEnd('get_sent_and_received_messages');
 
+    console.log('sentMessages', sentMessages);
+    console.log('receivedMessages', receivedMessages);
+
     console.time('structure_convo_data');
     const rpMap: Record<string, RelatedPerson> = {};
     const ottehrSenderMap: Record<string, Device | Practitioner> = {};
@@ -103,6 +106,12 @@ export const index = async (input: ZambdaInput): Promise<APIGatewayProxyResult> 
       } else if (resource.resourceType === 'RelatedPerson' && resource.id) {
         rpMap[`RelatedPerson/${resource.id}`] = resource as RelatedPerson;
       } else if (resource.resourceType === 'Patient' && resource.id) {
+        console.log(`Adding patient to patientMap: Patient/${resource.id}`, {
+          id: resource.id,
+          name: resource.name?.[0]?.text || 'N/A',
+          birthDate: resource.birthDate || 'N/A',
+          gender: resource.gender || 'N/A',
+        });
         patientMap[`Patient/${resource.id}`] = resource as Patient;
       }
     });
