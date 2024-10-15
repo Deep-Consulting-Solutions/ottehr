@@ -80,8 +80,8 @@ export const index = async (input: ZambdaInput): Promise<APIGatewayProxyResult> 
     ]);
     console.timeEnd('get_sent_and_received_messages');
 
-    console.log('sentMessages', sentMessages);
-    console.log('receivedMessages', receivedMessages);
+    console.log('sentMessages', JSON.stringify(sentMessages, null, 2));
+    console.log('receivedMessages', JSON.stringify(receivedMessages, null, 2));
 
     console.time('structure_convo_data');
     const rpMap: Record<string, RelatedPerson> = {};
