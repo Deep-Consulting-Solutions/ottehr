@@ -175,7 +175,7 @@ function App(): JSX.Element {
               element={IntakeFlowPageRoute.IOSVideoCallMenu.page}
             />
             <Route path={IntakeFlowPageRoute.ThankYou.path} element={IntakeFlowPageRoute.ThankYou.page} />
-            <Route path="*" element={<Navigate to={IntakeFlowPageRoute.PatientPortal.path} />} />
+            {/* <Route path="*" element={<Navigate to={IntakeFlowPageRoute.PatientPortal.path} />} /> */}
           </Routes>
         </Router>
       </IntakeThemeProvider>
